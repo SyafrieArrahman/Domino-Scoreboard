@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0c3b2a"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Domino"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/icons/icon-192.png"><link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<title>Domino Team Scoreboard</title><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div id="app">
+<header>
+ <div class="logo"><span class="tile"></span><b>DOMINO</b></div>
+ <div class="meta"><span>MATCH</span><b id="setLbl">SET 1</b><span id="wins"></span><span id="tgt"></span></div>
+ <div class="hb"><button id="bFs" aria-label="Layar penuh">⛶</button><button id="bSet" aria-label="Pengaturan">⚙</button></div>
+</header>
+<main>
+ <section class="team"><h2 class="name" data-n="a">Team A</h2><div class="score" data-s="a">0</div>
+  <div class="bar"><i data-b="a"></i><em data-sp="a" hidden>SET POINT</em></div>
+  <div class="pad"><button data-t="a" data-d="1">+1</button><button class="b2" data-t="a" data-d="2">+2</button><button class="b4" data-t="a" data-d="4">+4</button></div></section>
+ <section class="mid">
+  <div class="vs">VS</div>
+  <div class="round"><div><small>ROUND</small><b id="rd">01</b></div></div>
+  <div class="clock" id="clk">00:00</div>
+  <div class="tc"><button id="tT" aria-label="Start atau pause">▶</button><button id="tR" aria-label="Reset timer">↺</button><button id="un">Undo</button></div>
+  <button id="ns" class="ns">NEXT SET</button>
+ </section>
+ <section class="team"><h2 class="name" data-n="b">Team B</h2><div class="score" data-s="b">0</div>
+  <div class="bar"><i data-b="b"></i><em data-sp="b" hidden>SET POINT</em></div>
+  <div class="pad"><button data-t="b" data-d="1">+1</button><button class="b2" data-t="b" data-d="2">+2</button><button class="b4" data-t="b" data-d="4">+4</button></div></section>
+</main>
+</div>
+<canvas id="fx"></canvas>
+<div id="win" hidden><b id="wt"></b><button id="wn">NEXT SET</button><button id="wx" class="ghost">Tutup</button></div>
+<dialog id="dSet"><h3>Pengaturan</h3>
+ <div class="grid"><label>Nama Team A<input id="fA" maxlength="14"></label><label>Nama Team B<input id="fB" maxlength="14"></label>
+ <label>Target poin per set<input id="fT" type="number" min="1" max="999" inputmode="numeric"></label>
+ <label>Timer awal (menit)<input id="fM" type="number" min="0" max="180" inputmode="numeric"></label></div>
+ <div class="row"><button id="fReset" class="danger">Reset pertandingan</button><span></span><button id="fCancel">Batal</button><button id="fSave" class="ok">Simpan</button></div></dialog>
+<dialog id="dCf"><p id="cfMsg"></p><div class="row"><span></span><button id="cfNo">Batal</button><button id="cfOk" class="ok">Ya</button></div></dialog>
+<div id="rot"><svg width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="#d8ae4e" stroke-width="1.4"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 19h2"/></svg><b>Putar HP ke landscape</b><span>Scoreboard hanya tampil secara horizontal.</span></div>
+<script src="js/storage.js"></script><script src="js/timer.js"></script><script src="js/scoreboard.js"></script><script src="js/fx.js"></script><script src="js/app.js"></script>
+<script>if("serviceWorker"in navigator&&/^https?:/.test(location.protocol))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script>
+</body></html>
