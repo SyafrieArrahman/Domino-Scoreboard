@@ -1,6 +1,7 @@
 (function(){
 const $=q=>document.querySelector(q),$$=q=>[...document.querySelectorAll(q)],S=()=>Board.s;
 Board.init();
+const PLAY='<svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg>',PAUSE='<svg viewBox="0 0 24 24"><path d="M6 4.5h4.5v15H6zM13.5 4.5H18v15h-4.5z"/></svg>';
 const buzz=()=>navigator.vibrate&&navigator.vibrate(10);
 function render(){
  const s=S(),w=Board.winner();
@@ -13,7 +14,7 @@ function render(){
  const wa=s.sets.filter(x=>x.a>x.b).length,wb=s.sets.filter(x=>x.b>x.a).length;
  $('#setLbl').textContent='SET '+s.set;$('#wins').textContent=`${wa}–${wb}`;$('#tgt').textContent='TARGET '+s.target;
  $('#rd').textContent=String(s.round).padStart(2,'0');
- $('#tT').textContent=s.timer.running?'⏸':'▶';
+ $('#tT').innerHTML=s.timer.running?PAUSE:PLAY;
  $('#win').hidden=!(w&&!s.dismissed);
  if(w)$('#wt').textContent=`${s[w].name} MENANG SET ${s.set}`;
  tick();
@@ -31,7 +32,7 @@ $$('button[data-d]').forEach(b=>b.addEventListener('click',()=>{
 $('#un').onclick=()=>{if(Board.undo()){buzz();render()}};
 $('#tT').onclick=()=>{const t=S().timer;t.running?Timer.pause(t):Timer.start(t);Board.save();render()};
 $('#tR').onclick=()=>{Timer.reset(S().timer,S().initMin);Board.save();render()};
-async function next(){if(!Board.winner()&&!await ask('Belum ada tim yang menang set ini. Lanjut ke set berikutnya? Skor akan di-reset.','Next set'))return;Board.nextSet();render()}
+async function next(){if(!Board.winner()&&!await ask('Belum ada tim yang menang set ini. Lanjut ke set berikutnya? Skor akan di-reset (timer tetap berjalan).','Next set'))return;Board.nextSet();render()}
 $('#ns').onclick=next;$('#wn').onclick=next;
 $('#wx').onclick=()=>{S().dismissed=true;Board.save();render()};
 $('#bSet').onclick=()=>{const s=S();$('#fA').value=s.a.name;$('#fB').value=s.b.name;$('#fT').value=s.target;$('#fM').value=s.initMin;$('#dSet').showModal()};

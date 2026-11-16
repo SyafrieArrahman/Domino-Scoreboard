@@ -10,7 +10,7 @@ const Board={s:null,
  undo(){const s=this.s,h=s.history.pop();if(!h)return false;s.a.score=h.a;s.b.score=h.b;s.round=h.round;s.dismissed=false;this.save();return true},
  round(n){this.s.round=Math.max(1,this.s.round+n);this.save()},
  nextSet(){const s=this.s;s.sets.push({set:s.set,a:s.a.score,b:s.b.score});s.set++;s.a.score=s.b.score=0;s.round=1;
-  s.history=[];s.dismissed=false;Timer.reset(s.timer,s.initMin);this.save()},
+  s.history=[];s.dismissed=false;this.save()},
  settings(na,nb,target,min){const s=this.s,old=s.initMin;s.a.name=na||'Team A';s.b.name=nb||'Team B';
   s.target=Math.min(999,Math.max(1,target||100));s.initMin=Math.min(180,Math.max(0,min||0));
   if(!s.timer.running&&s.timer.base===old*60000)s.timer.base=s.initMin*60000;this.save()},

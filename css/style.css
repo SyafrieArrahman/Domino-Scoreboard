@@ -75,3 +75,7 @@ input{height:40px;font-size:16px;padding:0 10px;border:0;border-radius:8px;backg
 @keyframes fl{from{opacity:1}to{opacity:0}}
 .shake{animation:shake .5s}
 @keyframes shake{20%{transform:translate(-7px,3px)}40%{transform:translate(7px,-3px)}60%{transform:translate(-4px,2px)}80%{transform:translate(3px,-1px)}}
+
+.mid button svg{width:1.15em;height:1.15em;display:block;margin:auto;fill:currentColor}
+.mid button svg.ln{fill:none!important;stroke:currentColor}
+#wins{font-size:clamp(26px,9vh,46px);letter-spacing:.06em;font-variant-numeric:tabular-nums}
