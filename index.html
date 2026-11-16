@@ -7,7 +7,7 @@
 <div id="app">
 <header>
  <div class="logo"><span class="tile"></span><b>DOMINO</b></div>
- <div class="meta"><span>MATCH</span><b id="setLbl">SET 1</b><span id="wins"></span><span id="tgt"></span></div>
+ <div class="meta"><span>MATCH</span><b id="setLbl">SET 1</b><span id="tgt"></span></div>
  <div class="hb"><button id="bFs" aria-label="Layar penuh">⛶</button><button id="bSet" aria-label="Pengaturan">⚙</button></div>
 </header>
 <main>
@@ -15,10 +15,10 @@
   <div class="bar"><i data-b="a"></i><em data-sp="a" hidden>SET POINT</em></div>
   <div class="pad"><button data-t="a" data-d="1">+1</button><button class="b2" data-t="a" data-d="2">+2</button><button class="b4" data-t="a" data-d="4">+4</button></div></section>
  <section class="mid">
-  <div class="vs">VS</div>
+  <div class="vs" id="wins" aria-label="Poin set">0 – 0</div>
   <div class="round"><div><small>ROUND</small><b id="rd">01</b></div></div>
   <div class="clock" id="clk">00:00</div>
-  <div class="tc"><button id="tT" aria-label="Start atau pause">▶</button><button id="tR" aria-label="Reset timer">↺</button><button id="un">Undo</button></div>
+  <div class="tc"><button id="tT" aria-label="Start atau pause"></button><button id="tR" aria-label="Reset timer"><svg class="ln" viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.6-5.9M4 4v5h5"/></svg></button><button id="un">Undo</button></div>
   <button id="ns" class="ns">NEXT SET</button>
  </section>
  <section class="team"><h2 class="name" data-n="b">Team B</h2><div class="score" data-s="b">0</div>
