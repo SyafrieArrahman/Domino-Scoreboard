@@ -1,4 +1,4 @@
-// Perayaan: +2 = confetti emas, +4 = ledakan besar + flash + guncangan layar.
+// Perayaan: +2 = confetti emas, +3 = ledakan besar + flash + guncangan layar.
 const FX=(()=>{
  const cv=document.getElementById('fx'),c=cv.getContext('2d'),still=matchMedia('(prefers-reduced-motion:reduce)').matches;
  const gold=['#d8ae4e','#f4ecd6','#ffd36b','#e8c46a'],rainbow=gold.concat(['#fff','#ff5a5f','#4cc9f0','#7bd88f']);
@@ -16,12 +16,12 @@ const FX=(()=>{
  function celebrate(t,n){
   const r=document.querySelector(`[data-s="${t}"]`).getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
   const pop=document.createElement('div');pop.className='pop p'+n;pop.style.left=x+'px';pop.style.top=y+'px';
-  pop.innerHTML=n===4?'+4<small>MANTAP!</small>':'+2<small>NICE!</small>';temp(pop,1100);
-  if(navigator.vibrate)navigator.vibrate(n===4?[30,40,30,40,80]:[25,30,25]);
-  if(n===4){const f=document.createElement('div');f.className='flash';temp(f,650);
+  pop.innerHTML=n===3?'+3<small>MANTAP!</small>':'+2<small>NICE!</small>';temp(pop,1100);
+  if(navigator.vibrate)navigator.vibrate(n===3?[30,40,30,40,80]:[25,30,25]);
+  if(n===3){const f=document.createElement('div');f.className='flash';temp(f,650);
    const a=document.getElementById('app');a.classList.remove('shake');void a.offsetWidth;a.classList.add('shake');setTimeout(()=>a.classList.remove('shake'),520)}
   if(still)return;
-  if(n===4){spawn(x,y,90,15,rainbow,Math.PI*1.6);spawn(0,innerHeight,60,20,rainbow,1.1);spawn(innerWidth,innerHeight,60,20,rainbow,1.1);
+  if(n===3){spawn(x,y,90,15,rainbow,Math.PI*1.6);spawn(0,innerHeight,60,20,rainbow,1.1);spawn(innerWidth,innerHeight,60,20,rainbow,1.1);
    setTimeout(()=>{spawn(x,y,60,12,rainbow,Math.PI*1.8);go()},250)}
   else spawn(x,y,45,11,gold,Math.PI*1.2);
   go()}
